@@ -18,7 +18,7 @@ interface DrawRectParams extends DrawParamsBase {
     children?: DrawParams[]
 }
 
-type DrawParams = DrawImageParams | DrawTextParams | DrawRectParams
+export type DrawParams = DrawImageParams | DrawTextParams | DrawRectParams
 
 class CanvasShared {
     public ctx: CanvasRenderingContext2D
@@ -91,8 +91,8 @@ class CanvasShared {
     public drawText(drawParam: DrawTextParams) {
         const {style, text} = drawParam
         this.ctx.fillStyle = style.color;
-        this.ctx.font = `${style.fontSize}px ${style.fontFamily}`;
-        this.ctx.fillText(text, parseInt(style.left), parseInt(style.top + style.fontSize));
+        this.ctx.font = `${style.fontSize}px ${style.fontFamily || "Microsoft YaHei"}`;
+        this.ctx.fillText(text, parseInt(style.left), parseInt(style.top) + parseInt(style.fontSize));
     }
 
     public drawImage(drawImageParams: DrawImageParams) {
