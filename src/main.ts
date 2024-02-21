@@ -1,8 +1,6 @@
 interface DrawParamsBase {
     /** 块的样式 */
-    style: {
-        [key: string]: string
-    }
+    style: CSSStyleDeclaration
 }
 
 interface DrawImageParams extends DrawParamsBase {
@@ -63,12 +61,30 @@ class CanvasShared {
     public drawRect(drawParam: DrawRectParams) {
         const {style} = drawParam
 
+        this.drawBorder(style)
+
         this.ctx.fillStyle = style.backgroundColor
         this.ctx.fillRect(
             parseInt(style.left),
             parseInt(style.top),
             parseInt(style.width),
             parseInt(style.height)
+        )
+    }
+
+    private drawBorder(style: CSSStyleDeclaration) {
+        const {borderColor, borderWidth, borderRadius} = style
+        this.ctx.strokeStyle = borderColor
+        this.ctx.lineWidth = parseInt(borderWidth)
+        this.ctx.lineJoin = 'round'
+        this.ctx.beginPath()
+        this.ctx.moveTo(parseInt(style.left) + parseInt(borderRadius), parseInt(style.top))
+        this.ctx.lineTo(parseInt(style.left) + parseInt(style.width) - parseInt(borderRadius), parseInt(style.top))
+        this.ctx.quadraticCurveTo(
+            parseInt(style.left) + parseInt(style.width),
+            parseInt(style.top),
+            parseInt(style.left) + parseInt(style.width),
+            parseInt(style.top) + parseInt(borderRadius)
         )
     }
 
