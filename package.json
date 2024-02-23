@@ -2,15 +2,26 @@
   "name": "painter-share",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/src/main.js",
+  "main": "./dist/src/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "browser": {
+    "[module-name]": false
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "typescript": "^5.3.3"
+    "@tarojs/components": "*",
+    "@tarojs/taro": "*",
+    "mina-painter": "^2.2.5",
+    "react": "*",
+    "typescript": "*"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "rollup": "^4.12.0"
   }
 }

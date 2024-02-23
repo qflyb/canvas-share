@@ -1,5 +1,5 @@
 import { equal } from './lib/util';
-import { IView } from './index';
+import { PainterCanvasView } from '../index';
 import { toPx } from 'painter-kernel';
 
 const ACTION_DEFAULT_SIZE = 24;
@@ -50,7 +50,7 @@ export function isNeedRefresh(newVal, oldVal, dirty) {
 }
 
 export function getBox(rect, type, customActionStyle) {
-  const boxArea: IView = {
+  const boxArea: PainterCanvasView = {
     id: 'box',
     type: 'rect',
     css: {
@@ -75,7 +75,7 @@ export function getBox(rect, type, customActionStyle) {
 }
 
 export function getScaleIcon(rect, type, customActionStyle) {
-  const scaleArea: IView = {
+  const scaleArea: PainterCanvasView = {
     id: 'scale',
     type: 'rect',
     css: {
@@ -106,7 +106,7 @@ export function getScaleIcon(rect, type, customActionStyle) {
 }
 
 export function getDeleteIcon(rect, customActionStyle) {
-  const deleteArea: IView = {
+  const deleteArea: PainterCanvasView = {
     type: 'rect',
     id: 'delete',
     css: {

@@ -9,10 +9,11 @@
       "dom"
     ],
     "strict": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "outDir": "dist",
     "rootDir": "./",
     "declaration": true,
+    "jsx": "react"
   },
   "include": [
     "./src/**/*.ts",
